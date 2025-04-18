@@ -1,8 +1,14 @@
 [phases.setup]
-nixPkgs = ["ffmpeg"]
+nixPkgs = ["ffmpeg", "python39", "pipenv"]
+
+[phases.install]
+cmds = [
+  "pip install --upgrade pip",
+  "pip install -r requirements.txt"
+]
 
 [phases.build]
-cmds = ["pip install -r requirements.txt"]
+cmds = []
 
 [phases.start]
 cmds = ["gunicorn app:app --bind 0.0.0.0:8000"]
